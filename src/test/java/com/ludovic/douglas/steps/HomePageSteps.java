@@ -1,14 +1,18 @@
-package com.ludovic.douglas.ui.home;
+package com.ludovic.douglas.steps;
 
+import com.ludovic.douglas.ui.home.HomePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 public class HomePageSteps {
-    private HomePage homePage;
+    private static HomePage homePage;
 
-    //String url = "https://www.douglas.de/de";
+//    private static BasePage basePage;
+//    String url = "https://www.douglas.de/de";
+
 /*
     public HomePageSteps() {
         homePage = new HomePage();
@@ -33,6 +37,7 @@ public class HomePageSteps {
     public void the_user_should_see_the_headline_string(String text) {
         homePage.verifyElement(text);
     }
+
     @And("clicks on the 'Parfum' link")
     public void clicks_on_the_Parfum_link() {
         homePage.clickParfumLink();

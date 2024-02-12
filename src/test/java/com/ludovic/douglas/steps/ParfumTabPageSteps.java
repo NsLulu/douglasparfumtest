@@ -1,4 +1,4 @@
-package com.ludovic.douglas.ui.parfum;
+package com.ludovic.douglas.steps;
 
 public class ParfumTabPageSteps {
 }

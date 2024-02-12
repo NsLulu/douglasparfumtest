@@ -1,0 +1,19 @@
+src
+|-- test
+    |-- java
+        |-- your.package.name
+            |-- Driver
+                |-- DriverManager.java
+            |-- BaseStep.java
+            |-- BasePage.java
+            |-- BasePageLocator.java
+            |-- parfum
+                |-- ParfumSteps.java
+                |-- ParfumPage.java
+                |-- ParfumPageLocator.java
+    |-- resources
+        |-- your
+            |-- package
+                |-- name
+                    |-- features
+                        |-- parfum.feature
