@@ -1,6 +1,9 @@
 package com.ludovic.douglas.steps;
 
+import com.ludovic.douglas.managers.DriverManager;
 import com.ludovic.douglas.ui.home.HomePage;
+import com.ludovic.douglas.ui.home.HomePageLocator;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,18 +11,18 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 public class HomePageSteps {
-    private static HomePage homePage;
+    private static HomePage homePage = null;
 
-//    private static BasePage basePage;
-//    String url = "https://www.douglas.de/de";
-
-/*
     public HomePageSteps() {
-        homePage = new HomePage();
     }
-*/
+
+    @Before
+    public void setUp() {
+        homePage = HomePage.initializeHomePage("chrome");
+    }
     @When("the user navigates to {string}")
     public void the_user_navigates_to_string(String url) {
+//        initializeHomePage("edge");
         homePage.navigateTo(url);
     }
 

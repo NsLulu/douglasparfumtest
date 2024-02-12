@@ -1,9 +1,6 @@
 package com.ludovic.douglas.ui;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,19 +13,21 @@ import static sun.awt.SunToolkit.DEFAULT_WAIT_TIME;
 
 public class BasePage {
 
-    //    WebDriver driver;
     protected static RemoteWebDriver driver;
-
-    /*    public BasePage(WebDriver driver) {
-            this.driver = driver;
-            PageFactory.initElements(driver, this);
-        }*/
-
-//    System.setProperty("webdriver.chrome.driver", "C:/Program Files/Google/Chrome/Application/chromedriver.exe");
+    protected WebDriverWait wait;
 
     public BasePage(RemoteWebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
+    }
+    protected boolean isElementPresent(By by) {
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(by));
+            return true;
+        } catch (NoSuchElementException | TimeoutException e) {
+            return false;
+        }
     }
     private void waitVisibility(WebElement element, boolean clickable) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -66,7 +65,6 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
-
 
     public void click(WebElement element) {
         waitElementToBeClickable(element);
